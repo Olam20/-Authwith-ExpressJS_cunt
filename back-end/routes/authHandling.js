@@ -14,4 +14,7 @@ router.post('/register', (req, res) => authController.register(req, res))
 router.get('/user', authentication, authorisation("user"), (req, res) => authController.load_user_profile(req, res))
 router.put('/user', authentication, authorisation("user"), (req, res) => authController.update_user_profile(req, res))
 
+// New route for deleting a user by username
+router.delete('/user', authentication, authorisation("admin"), (req, res) => authController.delete_user_by_username(req, res));
+
 module.exports = router;
